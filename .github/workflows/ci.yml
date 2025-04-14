@@ -3,9 +3,11 @@ name: Java CI
 
 on:
   push:
-    branches: [ main ]
+    branches:
+      - main
   pull_request:
-    branches: [ main ]
+    branches:
+      - main
 
 jobs:
   build:
@@ -13,25 +15,29 @@ jobs:
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
 
-      - name: Set up JDK 11
-        uses: actions/setup-java@v4
+      - name: Set up JDK
+        uses: actions/setup-java@v3
         with:
-          distribution: 'temurin'
-          java-version: '11'
+          distribution: 'temurin' 
+          java-version: '21'
+          cache: maven
 
-      - name: Maven Validate
-        run: mvn validate --batch-mode
+      - name: Validate
+        run: mvn -B validate
 
-      - name: Maven Compile
-        run: mvn compile --batch-mode
+      - name: Compile
+        run: mvn -B compile
 
-      - name: Maven Test
-        run: mvn test --batch-mode
+      - name: Test
+        run: mvn -B test
 
-      - name: Maven Package
-        run: mvn package --batch-mode
+      - name: Package
+        run: mvn -B package
 
-      - name: Maven Verify
-        run: mvn verify --batch-mode
+      - name: Verify
+        run: mvn -B verify
+
+      - name: Install
+        run: mvn -B install
