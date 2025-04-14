@@ -1,0 +1,43 @@
+# File: .github/workflows/ci.yml
+name: Java CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin' 
+          java-version: '21'
+          cache: maven
+
+      - name: Validate
+        run: mvn -B validate
+
+      - name: Compile
+        run: mvn -B compile
+
+      - name: Test
+        run: mvn -B test
+
+      - name: Package
+        run: mvn -B package
+
+      - name: Verify
+        run: mvn -B verify
+
+      - name: Install
+        run: mvn -B install
