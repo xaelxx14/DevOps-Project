@@ -1,6 +1,6 @@
-# File: .github/workflows/ci.yml
 name: Java CI
 
+# This workflow is triggered on push or pull request events to the main branch.
 on:
   push:
     branches:
@@ -20,24 +20,15 @@ jobs:
       - name: Set up JDK
         uses: actions/setup-java@v3
         with:
-          distribution: 'temurin' 
+          distribution: 'temurin'
           java-version: '21'
           cache: maven
 
       - name: Validate
         run: mvn -B validate
 
-      - name: Compile
-        run: mvn -B compile
+      - name: Clean & Compile
+        run: mvn -B clean compile
 
       - name: Test
         run: mvn -B test
-
-      - name: Package
-        run: mvn -B package
-
-      - name: Verify
-        run: mvn -B verify
-
-      - name: Install
-        run: mvn -B install
