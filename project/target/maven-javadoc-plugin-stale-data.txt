@@ -1,0 +1,47 @@
+-J-Duser.language=
+-J-Duser.country=
+@options
+@packages
+-encoding
+'UTF-8'
+-protected
+-source
+'17'
+-sourcepath
+'/home/yumyum/M1/devops/DevOps-Project/project/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2025. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'/home/yumyum/M1/devops/DevOps-Project/project/target/reports/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'project 1.0-SNAPSHOT API'
+-use
+-version
+-windowtitle
+'project 1.0-SNAPSHOT API'
+devops.project
+/home/yumyum/M1/devops/DevOps-Project/project/src/main/java = 1743585377651
+/home/yumyum/M1/devops/DevOps-Project/project/target/reports/apidocs/package-search-index.js = 1744814752249
+/home/yumyum/M1/devops/DevOps-Project/project/target/reports/apidocs/type-search-index.js = 1744814752249
+/home/yumyum/M1/devops/DevOps-Project/project/target/reports/apidocs/module-search-index.js = 1744814752249
+/home/yumyum/M1/devops/DevOps-Project/project/target/reports/apidocs/element-list = 1744814752226
+/home/yumyum/M1/devops/DevOps-Project/project/target/reports/apidocs/index.html = 1744814752255
+/home/yumyum/M1/devops/DevOps-Project/project/target/reports/apidocs/stylesheet.css = 1744814752258
+/home/yumyum/M1/devops/DevOps-Project/project/target/reports/apidocs/allclasses-index.html = 1744814752248
+/home/yumyum/M1/devops/DevOps-Project/project/target/reports/apidocs/search.js = 1744814752259
+/home/yumyum/M1/devops/DevOps-Project/project/target/reports/apidocs/tag-search-index.js = 1744814752249
+/home/yumyum/M1/devops/DevOps-Project/project/target/reports/apidocs/link.svg = 1744814752259
+/home/yumyum/M1/devops/DevOps-Project/project/target/reports/apidocs/allpackages-index.html = 1744814752249
+/home/yumyum/M1/devops/DevOps-Project/project/target/reports/apidocs/copy.svg = 1744814752258
+/home/yumyum/M1/devops/DevOps-Project/project/target/reports/apidocs/search.html = 1744814752255
+/home/yumyum/M1/devops/DevOps-Project/project/target/reports/apidocs/help-doc.html = 1744814752257
+/home/yumyum/M1/devops/DevOps-Project/project/target/reports/apidocs/overview-tree.html = 1744814752242
+/home/yumyum/M1/devops/DevOps-Project/project/target/reports/apidocs/index-all.html = 1744814752254
+/home/yumyum/M1/devops/DevOps-Project/project/target/reports/apidocs/search-page.js = 1744814752260
+/home/yumyum/M1/devops/DevOps-Project/project/target/reports/apidocs/script.js = 1744814752258
+/home/yumyum/M1/devops/DevOps-Project/project/target/reports/apidocs/member-search-index.js = 1744814752249
