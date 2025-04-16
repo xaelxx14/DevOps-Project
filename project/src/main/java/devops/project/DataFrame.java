@@ -13,8 +13,11 @@ public class DataFrame {
     private Map<String, List<Object>> columns;
 
     //Constructor taking as parameters the contents of each column
-    public DataFrame(Map<String, List<Object>> columns) {
-        this.columns = columns;
+    public DataFrame(Map<String, List<Object>> data) {
+        if (data == null || data.isEmpty()) {
+            throw new IllegalArgumentException("Data cannot be null or empty");
+        }
+        this.columns = new HashMap<>(data); 
     }
     
     //Constructor taking as parameter the name of a CSV file
