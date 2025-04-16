@@ -1,8 +1,6 @@
 # 📊 Bibliothèque d’analyse de données en Java
 
-TODO badge
-<!-- ![Build Status]() -->
-<!-- ![Coverage]() -->
+![Build](https://github.com/xaelxx14/DevOps-Project/actions/workflows/ci.yml/badge.svg)
 
 Projet de M1 INFO – UFR IM2AG – 2025  
 Travail collaboratif autour du développement d’une bibliothèque Java pour la manipulation et l’analyse de données, inspirée de la bibliothèque **Pandas** en Python.
