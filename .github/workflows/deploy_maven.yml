@@ -1,0 +1,44 @@
+name: Deploy Maven Package
+
+# Workflow triggered after completion of Java CI workflow on main branch
+on:
+    workflow_run:
+      workflows: ["Java CI"]
+      types:
+        - completed
+      branches:
+        - main
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up JDK
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '21'
+          cache: maven
+          server-id: github
+          settings-path: ${{ github.workspace }}
+
+      - name: Package
+        run: mvn -B package
+
+      - name: Verify
+        run: mvn -B verify
+
+      - name: Install
+        run: mvn -B install
+
+      - name: Publish to GitHub Packages Apache Maven
+        run: mvn deploy -s $GITHUB_WORKSPACE/settings.xml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
