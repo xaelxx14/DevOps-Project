@@ -159,4 +159,16 @@ public class DataFrame {
         selected.put(columnName, cell);
         return new DataFrame(selected);
     }
+
+    public DataFrame selectByName(String... names) { // select by label
+        Map<String, List<Object>> selected = new HashMap<>();
+        for (String name : names) {
+            if (!columns.containsKey(name)) {
+                throw new IllegalArgumentException("Column not found: " + name);
+            }
+            selected.put(name, columns.get(name));
+        }
+        return new DataFrame(selected);
+    }
+     
 }

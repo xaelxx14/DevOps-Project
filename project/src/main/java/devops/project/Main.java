@@ -55,6 +55,11 @@ public class Main {
             DataFrame cell = df.iloc(0, 1);
             cell.printDataFrame();
 
+            System.out.println("------------------------------------------------");
+            System.out.println("Select cell by row and cloumn index: (0,1)");
+            DataFrame nameSelect = df_.selectByName("Id");
+            nameSelect.printDataFrame();
+
         } catch (IOException e) {
             System.err.println("Error reading the CSV file: " + e.getMessage());
         }

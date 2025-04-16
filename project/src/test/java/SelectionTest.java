@@ -76,5 +76,40 @@ public class SelectionTest {
         assertEquals(Arrays.asList(14), result3.getColumns().get("C"));
     }
 
+    @Test
+    public void testSelectByName() throws IOException {
+        DataFrame df = createSimpleDf(); 
+        DataFrame result = df.selectByName("A","C");
+        assertEquals(5, result.getRowSize());
+        assertEquals(2, result.getColumnSize());
+        assertEquals(Arrays.asList(1, 2, 3, 4, 5), result.getColumns().get("A"));
+        assertEquals(Arrays.asList(11, 12, 13, 14, 15), result.getColumns().get("C"));
+    }
+
+    @Test
+    public void testBadIndex(){
+        DataFrame df = createSimpleDf(); 
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            df.iloc(10, 1); // invalid row 
+        });
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            df.iloc(1, 10); // invalid column 
+        });
+        assertThrows(IndexOutOfBoundsException.class, () -> {
+            df.iloc(-1, -1); // invalid double negative
+        });
+    }
+
+    @Test
+    public void testBadName() {
+        DataFrame df = createSimpleDf(); 
+        assertThrows(IllegalArgumentException.class, () -> {
+            df.selectByName("X"); // invalid name
+        });
+        assertThrows(IllegalArgumentException.class, () -> {
+            df.selectByName("A", "X"); // one valid and one invalid  name
+        });
+    }
+
 
 }
