@@ -12,4 +12,12 @@
     <modules>
         <module>project</module>
     </modules>
+    
+    <distributionManagement>
+        <repository>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/xaelxx14/DevOps-Project</url>
+        </repository>
+    </distributionManagement>
+
 </project>
