@@ -1,17 +1,19 @@
-FROM ubuntu 
+FROM ubuntu:latest
 
-#Get JDK 11
+# Install JDK 17 (to match the Maven configuration in your project)
 RUN apt-get update && apt-get install -y \
-    openjdk-11-jdk \
+    openjdk-17-jdk \
+    maven \
     && apt-get clean
 
-WORKDIR /app
+# Set the working directory
+WORKDIR /app/project
 
+# Copy the project files into the container
 COPY . .
 
-# (skip tests already tested)
-RUN mvn clean package -DskipTests
+# Compile the Java source code
+RUN mvn clean compile
 
-EXPOSE 8080
-
-CMD ["java", "-jar", "target/app.jar"]
+# Set the default command to run Main.java
+CMD ["java", "-cp", "target/classes", "devops.project.Main"]
