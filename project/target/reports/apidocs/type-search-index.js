@@ -1,1 +1,0 @@
-typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"devops.project","l":"DataFrame"},{"p":"devops.project","l":"Main"}];updateSearchResults();
