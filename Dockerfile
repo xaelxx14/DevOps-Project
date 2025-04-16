@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y \
     && apt-get clean
 
 # Set the working directory
-WORKDIR /app/project
+WORKDIR /app
 
 # Copy the project files into the container
 COPY . .
@@ -16,4 +16,4 @@ COPY . .
 RUN mvn clean compile
 
 # Set the default command to run Main.java
-CMD ["java", "-cp", "target/classes", "devops.project.Main"]
+CMD ["java", "-cp", "project/target/classes", "devops.project.Main"]
