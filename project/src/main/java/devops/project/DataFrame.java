@@ -51,6 +51,14 @@ public class DataFrame {
         return columns;
     }
 
+    public int  getColumnSize(){
+        return columns.size();
+    }
+
+    public int getRowSize() {
+        return columns.values().iterator().next().size();
+    }
+
     //Print methods for the dataframe
 
     public void printDataFrame() {
@@ -60,7 +68,7 @@ public class DataFrame {
         }
         System.out.println();
         //Vlues of each column
-        int numRows = columns.values().iterator().next().size();
+        int numRows = getRowSize();
         for (int i = 0; i < numRows; i++) {
             for (String columnName : columns.keySet()) {
                 System.out.print(columns.get(columnName).get(i) + "\t");
@@ -99,5 +107,56 @@ public class DataFrame {
             }
             System.out.println();
         }
+    }
+    
+    public DataFrame iloc(int rowStart, int rowEnd, int colStart, int colEnd) {
+        if (rowStart < 0 || rowEnd > getRowSize() || rowStart > rowEnd) {
+            throw new IndexOutOfBoundsException("Row indices out of bounds: " + rowStart + " to " + rowEnd);
+        }
+        if (colStart < 0 || colEnd > getColumnSize() || colStart > colEnd) {
+            throw new IndexOutOfBoundsException("Column indices out of bounds: " + colStart + " to " + colEnd);
+        }
+    
+        List<String> columnNames = new ArrayList<>(columns.keySet());
+        Map<String, List<Object>> selected = new HashMap<>();
+        for (int i = colStart; i <= colEnd; i++) {
+            String columnName = columnNames.get(i);
+            List<Object> selectedData = new ArrayList<>();
+            for (int j = rowStart; j <= rowEnd; j++) {
+                selectedData.add(columns.get(columnName).get(j));
+            }
+            selected.put(columnName, selectedData);
+        }
+        return new DataFrame(selected);
+    }
+
+    public DataFrame iloc(int rowIndex, int colIndex) {
+        if (rowIndex < -1 || rowIndex >= getRowSize()) {
+            throw new IndexOutOfBoundsException("Row index out of bounds: " + rowIndex);
+        }
+        if (colIndex < -1 || colIndex >= getColumnSize()) {
+            throw new IndexOutOfBoundsException("Column index out of bounds: " + colIndex);
+        }
+    
+        if (rowIndex == -1) {
+            return iloc(0, getRowSize()-1, colIndex, colIndex);
+        } else if (colIndex == -1) {
+            return iloc(rowIndex, rowIndex, 0, getColumnSize()-1);
+        } else {
+            return getCell(rowIndex, colIndex);
+        }
+    }
+
+    public DataFrame getCell(int rowIndex, int colIndex) {
+        if (rowIndex < 0 || colIndex < 0 || rowIndex >= getRowSize() || colIndex >= getColumnSize()) {
+            throw new IndexOutOfBoundsException("Row or column index out of bounds: rowIndex=" + rowIndex + ", colIndex=" + colIndex);
+        }
+        List<String> columnNames = new ArrayList<>(columns.keySet());
+        String columnName = columnNames.get(colIndex);
+        List<Object> cell = new ArrayList<>();
+        cell.add(columns.get(columnName).get(rowIndex));
+        Map<String, List<Object>> selected = new HashMap<>();
+        selected.put(columnName, cell);
+        return new DataFrame(selected);
     }
 }
