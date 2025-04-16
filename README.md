@@ -65,3 +65,15 @@ Une image Docker est produite et publiée automatiquement après la réussite du
 
 ### Image Docker Produite :
 - **Lien vers le dépôt** : [Image Docker - DevOps Project](https://github.com/xaelxx14/DevOps-Project/pkgs/container/devops-project)
+
+## 📝 Feedback
+Durant ce projet, on a eu l’occasion de découvrir ou approfondir l’usage de plusieurs outils liés au développement, aux tests, et au déploiement d’une bibliothèque Java.
+
+- **GitHub** : Ayant déjà une certaine expérience avec Git, les tps nous ont permis d’aller plus loin dans l’organisation collaborative, notamment avec les workflows GitHub Actions,
+- **Maven** : Même si nous connaissions déjà l’outil, le mettre en pratique dans un projet concret, avec des plugins comme `jacoco` ou `maven-javadoc-plugin`, a rendu son utilisation plus claire et plus concrète.
+- **JUnit** : Les tests unitaires étaient simples à mettre en place, la tp de JUnit et les diapos de cours nous ayant bien aidés à comprendre la démarche. Ils nous ont permis de vérifier rapidement que notre code restait fiable tout au long du développement.
+- **Docker** : La tp nous ont permis de nous familiariser avec les bases de Docker, notamment la création d’images et leur intégration dans un pipeline d’automatisation via GitHub Actions.
+- **Cloud** : Cette partie nous a semblé plus complexe. L'utilisation de Terraform n'était pas toujours intuitive, et des problèmes techniques liés au proxy WSL et au client Google Cloud nous ont empêchés de mettre en place une solution pleinement fonctionnelle.
+
+En résumé, les outils étaient accessibles, il y avait énormément de ressources disponibles sur Internet, et les tps nous ont donné la confiance nécessaire pour les utiliser efficacement.
+
