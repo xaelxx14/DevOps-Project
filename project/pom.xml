@@ -5,9 +5,13 @@
     
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>devops.project</groupId>
+    <parent>
+        <groupId>devops.project</groupId>
+        <artifactId>devops.project</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+
     <artifactId>project</artifactId>
-    <version>1.0-SNAPSHOT</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
@@ -30,4 +34,27 @@
             <scope>test</scope>
         </dependency>
     </dependencies>
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <version>3.0.0</version>
+            </plugin>
+            <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-jar-plugin</artifactId>
+            <version>3.2.2</version>
+            <configuration>
+                <archive>
+                    <manifest>
+                        <addClasspath>true</addClasspath>
+                        <mainClass>devops.project.Main</mainClass>
+                    </manifest>
+                </archive>
+            </configuration>
+        </plugin>
+        </plugins>
+    </build>
+
 </project>
