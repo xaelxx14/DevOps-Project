@@ -8,11 +8,21 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+/**
+ * The {@code DataFrame} class represents a data frame where each column is a list of values.
+ * It provides methods for data manipulation, selection, and printing.
+ */
 public class DataFrame {
-    //Key represents the column name and each value is a list of data for that column.
+    /**
+     * A map where the key represents the column name and the value is a list of data for that column.
+     */
     private Map<String, List<Object>> columns;
 
-    //Constructor taking as parameters the contents of each column
+    /**
+     * Constructs a DataFrame from a map of column names and their corresponding data.
+     * @param data A map where the key is the column name and the value is a list of data for that column.
+     * @throws IllegalArgumentException if the data is null or empty.
+     */
     public DataFrame(Map<String, List<Object>> data) {
         if (data == null || data.isEmpty()) {
             throw new IllegalArgumentException("Data cannot be null or empty");
@@ -20,7 +30,11 @@ public class DataFrame {
         this.columns = new HashMap<>(data); 
     }
     
-    //Constructor taking as parameter the name of a CSV file
+    /**
+     * Constructs a DataFrame from a CSV file.
+     * @param fileName The name of the CSV file to read.
+     * @throws IOException if an error occurs while reading the file.
+     */
     public DataFrame(String fileName) throws IOException {
         columns = new HashMap<>();
         BufferedReader buffRead = new BufferedReader(new FileReader(fileName));
@@ -47,6 +61,10 @@ public class DataFrame {
         buffRead.close();
     }
 
+    /**
+     * Returns the columns of the DataFrame.
+     * @return A map where the key is the column name and the value is a list of data for that column.
+     */
     public Map<String, List<Object>> getColumns() {
         return columns;
     }
@@ -59,8 +77,9 @@ public class DataFrame {
         return columns.values().iterator().next().size();
     }
 
-    //Print methods for the dataframe
-
+    /**
+     * Prints the DataFrame to the console.
+    */
     public void printDataFrame() {
         //Column names
         for (String columnName : columns.keySet()) {
@@ -77,6 +96,10 @@ public class DataFrame {
         }
     }
 
+    /**
+     * Prints the first n lines of the DataFrame to the console.
+     * @param n The number of lines to print.
+     */
     public void printFirstLines(int n) {
         //Column names
         for (String columnName : columns.keySet()) {
@@ -92,6 +115,10 @@ public class DataFrame {
         }
     }
 
+    /**
+     * Prints the last n lines of the DataFrame to the console.
+     * @param n The number of lines to print.
+     */
     public void printLastLines(int n) {
         //Column names
         for (String columnName : columns.keySet()) {
@@ -109,6 +136,14 @@ public class DataFrame {
         }
     }
     
+    /**
+     * Returns a new DataFrame containing the specified rows and columns.
+     * @param rowStart The starting index of the rows to select.
+     * @param rowEnd The ending index of the rows to select.
+     * @param colStart The starting index of the columns to select.
+     * @param colEnd The ending index of the columns to select.
+     * @return A new DataFrame containing the selected rows and columns.
+     */
     public DataFrame iloc(int rowStart, int rowEnd, int colStart, int colEnd) {
         if (rowStart < 0 || rowEnd > getRowSize() || rowStart > rowEnd) {
             throw new IndexOutOfBoundsException("Row indices out of bounds: " + rowStart + " to " + rowEnd);
@@ -130,6 +165,12 @@ public class DataFrame {
         return new DataFrame(selected);
     }
 
+    /**
+     * Returns a new DataFrame containing the specified cell or row/column.
+     * @param rowIndex The index of the row to select.
+     * @param colIndex The index of the column to select.
+     * @return A new DataFrame containing the selected cell or row/column.
+     */
     public DataFrame iloc(int rowIndex, int colIndex) {
         if (rowIndex < -1 || rowIndex >= getRowSize()) {
             throw new IndexOutOfBoundsException("Row index out of bounds: " + rowIndex);
@@ -147,6 +188,12 @@ public class DataFrame {
         }
     }
 
+    /**
+     * Returns a new DataFrame containing the specified cell.
+     * @param rowIndex The index of the row to select.
+     * @param colIndex The index of the column to select.
+     * @return A new DataFrame containing the selected cell.
+     */
     public DataFrame getCell(int rowIndex, int colIndex) {
         if (rowIndex < 0 || colIndex < 0 || rowIndex >= getRowSize() || colIndex >= getColumnSize()) {
             throw new IndexOutOfBoundsException("Row or column index out of bounds: rowIndex=" + rowIndex + ", colIndex=" + colIndex);
@@ -160,6 +207,11 @@ public class DataFrame {
         return new DataFrame(selected);
     }
 
+    /**
+     * Returns a new DataFrame containing the specified columns by their names.
+     * @param names The names of the columns to select.
+     * @return A new DataFrame containing the selected columns.
+     */
     public DataFrame selectByName(String... names) { // select by label
         Map<String, List<Object>> selected = new HashMap<>();
         for (String name : names) {

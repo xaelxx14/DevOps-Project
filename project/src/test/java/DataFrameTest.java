@@ -10,9 +10,20 @@ import org.junit.jupiter.api.Test;
 
 import devops.project.DataFrame;
 
+/**
+ * The {@code DataFrameTest} class contains unit tests for the {@code DataFrame} class.
+ * It tests the constructor, data retrieval, and data manipulation methods of the DataFrame.
+ */
 class DataFrameTest {
 
+    /**
+     * The path to the CSV file used for testing.
+     */
     private String TEST_CSV_FILE = "src/main/data/f1db_csv/status.csv";
+
+    /**
+     * The path to the CSV file used for testing.
+     */
     @Test
     void testDataFrameConstructorCSV() throws IOException {
 
@@ -39,6 +50,10 @@ class DataFrameTest {
         assertEquals("Turbo", statusColumn.get(100));
         assertEquals("Cooling system", statusColumn.get(statusColumn.size()-1));
     }
+
+    /**
+     * The path to the CSV file used for testing.
+     */
     @Test
     void testDataFrameConstructor() throws IOException {
         Map<String, List<Object>> data = new HashMap<>();

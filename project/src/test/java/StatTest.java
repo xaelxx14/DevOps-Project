@@ -12,8 +12,16 @@ import org.junit.jupiter.api.Test;
 import devops.project.DataFrame;
 import devops.project.DataFrameStatistics;
 
+/**
+ * The {@code StatTest} class contains unit tests for the statistical methods of the {@code DataFrameStatistics} class.
+ */
 public class StatTest {
 
+    /**
+     * Creates a simple DataFrame for testing purposes.
+     * The DataFrame contains three columns: A, B, and C, with five rows of integer data.
+     * @return A DataFrame with three columns and five rows.
+     */
     public DataFrame createSimpleDf() {
         Map<String, List<Object>> data = new HashMap<>();
         data.put("A", Arrays.asList(1, 2, 3, 4, 5));
@@ -35,7 +43,11 @@ public class StatTest {
 
     }
 
-
+    /**
+     * Tests the sum method for calculating the sum of a numeric column.
+     * It verifies that the sum is calculated correctly for each column.
+     * @throws IOException if an error occurs while creating the DataFrame.
+     */
     @Test
     public void testSum() throws IOException {
         DataFrame df = createSimpleDf();
@@ -49,6 +61,11 @@ public class StatTest {
         assertEquals(65.0, sumC);
     }
 
+    /**
+     * Tests the mean method for calculating the mean of a numeric column.
+     * It verifies that the mean is calculated correctly for each column.
+     * @throws IOException if an error occurs while creating the DataFrame.
+     */
     @Test
     public void testMean() throws IOException {
         DataFrame df = createSimpleDf();
@@ -62,6 +79,11 @@ public class StatTest {
         assertEquals(13.0, meanC);
     }
 
+    /**
+     * Tests the min method for calculating the minimum value of a numeric column.
+     * It verifies that the minimum value is calculated correctly for each column.
+     * @throws IOException if an error occurs while creating the DataFrame.
+     */
     @Test 
     public void testMin() throws IOException {
         DataFrame df = createSimpleDf();
@@ -75,6 +97,11 @@ public class StatTest {
         assertEquals(11.0, minC);
     }
 
+    /**
+     * Tests the max method for calculating the maximum value of a numeric column.
+     * It verifies that the maximum value is calculated correctly for each column.
+     * @throws IOException if an error occurs while creating the DataFrame.
+     */
     @Test
     public void testMax() throws IOException {
         DataFrame df = createSimpleDf();
@@ -88,6 +115,11 @@ public class StatTest {
         assertEquals(15.0, maxC);
     }
 
+    /**
+     * Tests invalid column name.
+     * It verifies that an IllegalArgumentException is thrown for each method.
+     * @throws IOException if an error occurs while creating the DataFrame.
+     */
     @Test
     public void testInvalidColumn() throws IOException {
         DataFrame df = createSimpleDf();
@@ -108,6 +140,11 @@ public class StatTest {
         });
     }
 
+    /**
+     * Tests non-numeric column.
+     * It verifies that an IllegalArgumentException is thrown for each method.
+     * @throws IOException if an error occurs while creating the DataFrame.
+     */
     @Test
     public void testNonNumericColumn() throws IOException {
         Map<String, List<Object>> data = new HashMap<>();

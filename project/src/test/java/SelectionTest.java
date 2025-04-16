@@ -12,8 +12,16 @@ import org.junit.jupiter.api.Test;
 
 import devops.project.DataFrame;
 
+/**
+ * The {@code SelectionTest} class contains unit tests for the selection methods of the {@code DataFrame} class.
+ */
 public class SelectionTest {
 
+    /**
+     * Creates a simple DataFrame for testing purposes.
+     * The DataFrame contains three columns: A, B, and C, with five rows of integer data.
+     * @return A DataFrame with three columns and five rows.
+     */
     public DataFrame createSimpleDf() {
         Map<String, List<Object>> data = new HashMap<>();
         data.put("A", Arrays.asList(1, 2, 3, 4, 5));
@@ -29,6 +37,11 @@ public class SelectionTest {
         // 5 10 15
     }
 
+    /**
+     * Tests the iloc method for selecting a range of rows and columns.
+     * It verifies that the resulting DataFrame has the expected number of rows and columns.
+     * @throws IOException if an error occurs while creating the DataFrame.
+     */
     @Test
     public void testIlocRowAndColumnRange() throws IOException {
         DataFrame df = createSimpleDf(); 
@@ -37,6 +50,11 @@ public class SelectionTest {
         assertEquals(2, result.getColumnSize());
     }
 
+    /**
+     * Tests the iloc method for selecting a single row.
+     * It verifies that the resulting DataFrame has the expected number of rows and columns.
+     * @throws IOException if an error occurs while creating the DataFrame.
+     */
     @Test
     public void testIlocSingleRow() throws IOException {
         DataFrame df = createSimpleDf(); 
@@ -48,6 +66,11 @@ public class SelectionTest {
         assertEquals(Arrays.asList(13), result.getColumns().get("C"));
     }
 
+    /**
+     * Tests the iloc method for selecting a single column.
+     * It verifies that the resulting DataFrame has the expected number of rows and columns.
+     * @throws IOException if an error occurs while creating the DataFrame.
+     */
     @Test
     public void testIlocSingleColumn() throws IOException {
         DataFrame df = createSimpleDf(); 
@@ -57,6 +80,11 @@ public class SelectionTest {
         assertEquals(Arrays.asList(6, 7, 8, 9, 10), result.getColumns().get("B"));
     }
 
+    /**
+     * Tests the iloc method for selecting a single cell.
+     * It verifies that the resulting DataFrame has the expected number of rows, columns and value.
+     * @throws IOException if an error occurs while creating the DataFrame.
+     */
     @Test
     public void testCell() throws IOException {
         DataFrame df = createSimpleDf(); 
@@ -76,6 +104,11 @@ public class SelectionTest {
         assertEquals(Arrays.asList(14), result3.getColumns().get("C"));
     }
 
+    /**
+     * Tests the selectByName method for selecting specific columns by name.
+     * It verifies that the resulting DataFrame has the expected number of rows, columns and value.
+     * @throws IOException if an error occurs while creating the DataFrame.
+     */
     @Test
     public void testSelectByName() throws IOException {
         DataFrame df = createSimpleDf(); 
@@ -86,6 +119,9 @@ public class SelectionTest {
         assertEquals(Arrays.asList(11, 12, 13, 14, 15), result.getColumns().get("C"));
     }
 
+    /**
+     * Tests invalid index access in the iloc method.
+    */
     @Test
     public void testBadIndex(){
         DataFrame df = createSimpleDf(); 
@@ -100,6 +136,10 @@ public class SelectionTest {
         });
     }
 
+    /**
+     * Tests invalid column name access in the selectByName method.
+     * It verifies that an IllegalArgumentException is thrown when an invalid column name is provided.
+     */
     @Test
     public void testBadName() {
         DataFrame df = createSimpleDf(); 
