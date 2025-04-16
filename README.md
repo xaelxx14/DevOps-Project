@@ -12,17 +12,17 @@ Travail collaboratif autour du développement d’une bibliothèque Java pour la
 ## Fonctionnalités
 
 ### Fonctionnalités de base :
-- ❌ Création de `DataFrame` :
+- ✅ Création de `DataFrame` :
   - À partir de tableaux Java.
   - À partir de fichiers CSV (avec inférence ou définition des types de colonnes).
-- ❌ Affichage :
+- ✅ Affichage :
   - Affichage complet d’un `DataFrame`.
   - Affichage des `n` premières ou dernières lignes.
-- ❌ Sélection :
+- ✅ Sélection :
   - Sélection de lignes par index.
   - Sélection de colonnes par label.
   - Sélection avancée (e.g. par conditions sur les valeurs).
-- ❌ Statistiques de base :
+- ✅ Statistiques de base :
   - Moyenne, minimum, maximum sur les colonnes numériques.
 
 ## 🛠️ Outils utilisés
