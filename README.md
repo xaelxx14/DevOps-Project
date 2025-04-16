@@ -38,9 +38,30 @@ Travail collaboratif autour du développement d’une bibliothèque Java pour la
 | Livraison Docker | Docker + DockerHub |
 | Documentation | GitHub Pages |
 
-## 🧪 Intégration & Livraison continue
+# ⚙️ Workflows GitHub Actions
 
-- Pipelines CI lancés à chaque commit et Merge Request sur main.
-- Résultats disponibles dans l’onglet "Actions"/"CI/CD".
-- (TODO) Publication automatique de la bibliothèque dans le registre Maven.
-- (TODO) Génération et déploiement de la documentation et site web via CI.
+Plusieurs workflows ont été configurés pour automatiser les tâches clés du projet :
+
+1. **Java CI** (`ci.yml`) :
+   - Déclenché à chaque `push` ou `pull request` sur la branche `main`.
+   - Étapes :
+     - Validation du projet Maven.
+     - Compilation du code.
+     - Exécution des tests unitaires avec JUnit.
+     - Génération de la documentation de notre librairie avec javadoc.
+
+2. **Déploiement Docker** (`docker_image.yml`) :
+   - Déclenché après la réussite du workflow **Java CI** sur la branche `main`. Consiste à construire et publier une image Docker sur le registre Docker.
+
+3. **Publication Maven** (`deploy_maven.yml`) :
+   - Déclenché après la réussite du workflow **Java CI** sur la branche `main`.
+   - Étapes :
+     - Construction et vérification du package Maven.
+     - Publication automatique de la bibliothèque sur GitHub Packages.
+
+## 🐳 Images Docker
+
+Une image Docker est produite et publiée automatiquement après la réussite du workflow **Docker image**. Cette image execute notre fonction principale situé dans notre Main.java exposant plusieurs fonctionnalités de notre bibliothèque.
+
+### Image Docker Produite :
+- **Lien vers le dépôt** : [Image Docker - DevOps Project](https://github.com/xaelxx14/DevOps-Project/pkgs/container/devops-project)
