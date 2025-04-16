@@ -32,3 +32,6 @@ jobs:
 
       - name: Test
         run: mvn -B test
+
+      - name: Generate Javadoc
+        run: ./generate_docs.sh

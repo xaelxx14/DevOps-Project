@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"devops.project","l":"DataFrame"},{"p":"devops.project","l":"DataFrameStatistics"},{"p":"devops.project","l":"Main"}]
